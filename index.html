@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en" id="htmlRoot">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>తెలంగాణ గ్రామ సేవా పోర్టల్ | Telangana Village Information Portal</title>
+<meta name="description" content="Telangana Village Information Portal - Schemes, Land Services, Agriculture, Jobs, Health, Education and more.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===================== HEADER / NAVBAR ===================== -->
+<header class="navbar" id="navbar">
+  <div class="nav-top">
+    <div class="logo" onclick="navigateTo('home')">
+      <span class="logo-icon">🏡</span>
+      <span class="logo-text">
+        <span data-en="Telangana Village Portal" data-te="తెలంగాణ గ్రామ పోర్టల్">Telangana Village Portal</span>
+      </span>
+    </div>
+
+    <div class="nav-controls">
+      <button class="icon-btn" id="langToggle" title="Change Language">EN / తె</button>
+      <button class="icon-btn" id="themeToggle" title="Toggle Dark/Light">🌙</button>
+      <button class="icon-btn" id="notifBtn" title="Notifications">🔔<span class="badge" id="notifBadge">3</span></button>
+      <button class="icon-btn voice-btn" id="voiceBtn" title="AI Voice Assistant">🎙️</button>
+      <div id="authArea">
+        <button class="btn btn-outline" id="loginBtn" data-en="Sign In" data-te="సైన్ ఇన్">Sign In</button>
+      </div>
+      <button class="icon-btn hamburger" id="hamburger">☰</button>
+    </div>
+  </div>
+
+  <nav class="nav-bottom" id="navMenu">
+    <a href="#" data-page="home" data-en="Home" data-te="హోమ్">Home</a>
+    <a href="#" data-page="schemes" data-en="Schemes" data-te="పథకాలు">Schemes</a>
+    <a href="#" data-page="land" data-en="Land Services" data-te="భూమి సేవలు">Land Services</a>
+    <a href="#" data-page="agriculture" data-en="Agriculture" data-te="వ్యవసాయం">Agriculture</a>
+    <a href="#" data-page="jobs" data-en="Jobs" data-te="ఉద్యోగాలు">Jobs</a>
+    <a href="#" data-page="business" data-en="Business Directory" data-te="వ్యాపార డైరెక్టరీ">Business</a>
+    <a href="#" data-page="health" data-en="Health" data-te="ఆరోగ్యం">Health</a>
+    <a href="#" data-page="education" data-en="Education" data-te="విద్య">Education</a>
+    <a href="#" data-page="transport" data-en="Transport" data-te="రవాణా">Transport</a>
+    <a href="#" data-page="villageservices" data-en="Village Services" data-te="గ్రామ సేవలు">Village Services</a>
+    <a href="#" data-page="marketplace" data-en="Marketplace" data-te="మార్కెట్ ప్లేస్">Marketplace</a>
+    <a href="#" data-page="emergency" data-en="Emergency" data-te="అత్యవసరం">Emergency</a>
+    <a href="#" data-page="development" data-en="Development" data-te="అభివృద్ధి">Development</a>
+    <a href="#" data-page="complaints" data-en="Complaints" data-te="ఫిర్యాదులు">Complaints</a>
+    <a href="#" data-page="admin" data-en="Admin Panel" data-te="అడ్మిన్ ప్యానెల్">Admin</a>
+  </nav>
+</header>
+
+<main id="appRoot">
+
+<!-- ===================== HOME PAGE ===================== -->
+<section class="page active" id="page-home">
+  <div class="hero">
+    <div class="hero-content">
+      <h1 data-en="Welcome to Your Village Portal" data-te="మీ గ్రామ పోర్టల్‌కు స్వాగతం">Welcome to Your Village Portal</h1>
+      <p data-en="All government schemes, land records, jobs, and village services — in one place." data-te="అన్ని ప్రభుత్వ పథకాలు, భూమి రికార్డులు, ఉద్యోగాలు మరియు గ్రామ సేవలు — ఒకే చోట.">All government schemes, land records, jobs, and village services — in one place.</p>
+      <div class="search-bar">
+        <input type="text" id="globalSearch" placeholder="Search schemes, services, jobs..." data-en-ph="Search schemes, services, jobs..." data-te-ph="పథకాలు, సేవలు, ఉద్యోగాలు వెతకండి...">
+        <button onclick="performSearch()" data-en="Search" data-te="వెతకండి">Search</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-block">
+    <h2 data-en="📢 Latest Government Updates" data-te="📢 తాజా ప్రభుత్వ నవీకరణలు">📢 Latest Government Updates</h2>
+    <div class="updates-list" id="updatesList"></div>
+  </div>
+
+  <div class="section-block">
+    <h2 data-en="Quick Access" data-te="త్వరిత ప్రాప్తి">Quick Access</h2>
+    <div class="quick-grid" id="quickGrid"></div>
+  </div>
+</section>
+
+<!-- ===================== SCHEMES ===================== -->
+<section class="page" id="page-schemes">
+  <h1 data-en="Government Schemes" data-te="ప్రభుత్వ పథకాలు">Government Schemes</h1>
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="central" data-en="Central Govt Schemes" data-te="కేంద్ర ప్రభుత్వ పథకాలు">Central Govt Schemes</button>
+    <button class="tab-btn" data-tab="state" data-en="Telangana Govt Schemes" data-te="తెలంగాణ ప్రభుత్వ పథకాలు">Telangana Govt Schemes</button>
+  </div>
+  <div class="card-grid" id="schemesGrid"></div>
+</section>
+
+<!-- ===================== LAND SERVICES ===================== -->
+<section class="page" id="page-land">
+  <h1 data-en="Land Services" data-te="భూమి సేవలు">Land Services</h1>
+  <div class="card-grid" id="landGrid"></div>
+</section>
+
+<!-- ===================== AGRICULTURE ===================== -->
+<section class="page" id="page-agriculture">
+  <h1 data-en="Agriculture" data-te="వ్యవసాయం">Agriculture</h1>
+  <div class="card-grid" id="agriGrid"></div>
+  <div class="section-block">
+    <h2 data-en="🌦️ Weather & Market Prices" data-te="🌦️ వాతావరణం & మార్కెట్ ధరలు">Weather & Market Prices</h2>
+    <div class="info-row" id="weatherMarket"></div>
+  </div>
+</section>
+
+<!-- ===================== JOBS ===================== -->
+<section class="page" id="page-jobs">
+  <h1 data-en="Jobs" data-te="ఉద్యోగాలు">Jobs</h1>
+  <div class="card-grid" id="jobsGrid"></div>
+</section>
+
+<!-- ===================== BUSINESS DIRECTORY ===================== -->
+<section class="page" id="page-business">
+  <h1 data-en="Business Directory" data-te="వ్యాపార డైరెక్టరీ">Business Directory</h1>
+  <div class="card-grid" id="businessGrid"></div>
+</section>
+
+<!-- ===================== HEALTH ===================== -->
+<section class="page" id="page-health">
+  <h1 data-en="Health" data-te="ఆరోగ్యం">Health</h1>
+  <div class="card-grid" id="healthGrid"></div>
+</section>
+
+<!-- ===================== EDUCATION ===================== -->
+<section class="page" id="page-education">
+  <h1 data-en="Education" data-te="విద్య">Education</h1>
+  <div class="card-grid" id="eduGrid"></div>
+</section>
+
+<!-- ===================== TRANSPORT ===================== -->
+<section class="page" id="page-transport">
+  <h1 data-en="Transport" data-te="రవాణా">Transport</h1>
+  <div class="card-grid" id="transportGrid"></div>
+</section>
+
+<!-- ===================== VILLAGE SERVICES ===================== -->
+<section class="page" id="page-villageservices">
+  <h1 data-en="Village Services" data-te="గ్రామ సేవలు">Village Services</h1>
+  <div class="card-grid" id="villageServicesGrid"></div>
+</section>
+
+<!-- ===================== MARKETPLACE ===================== -->
+<section class="page" id="page-marketplace">
+  <h1 data-en="Local Marketplace" data-te="స్థానిక మార్కెట్ ప్లేస్">Local Marketplace</h1>
+  <div class="card-grid" id="marketGrid"></div>
+</section>
+
+<!-- ===================== EMERGENCY ===================== -->
+<section class="page" id="page-emergency">
+  <h1 data-en="Emergency Services" data-te="అత్యవసర సేవలు">Emergency Services</h1>
+  <div class="card-grid emergency-grid" id="emergencyGrid"></div>
+</section>
+
+<!-- ===================== DEVELOPMENT ===================== -->
+<section class="page" id="page-development">
+  <h1 data-en="Village Development" data-te="గ్రామ అభివృద్ధి">Village Development</h1>
+  <div class="card-grid" id="devGrid"></div>
+</section>
+
+<!-- ===================== COMPLAINTS ===================== -->
+<section class="page" id="page-complaints">
+  <h1 data-en="Complaint Portal" data-te="ఫిర్యాదుల పోర్టల్">Complaint Portal</h1>
+  <div class="complaint-wrap">
+    <form id="complaintForm" class="form-card">
+      <h3 data-en="Submit a Complaint" data-te="ఫిర్యాదు సమర్పించండి">Submit a Complaint</h3>
+      <input type="text" id="compName" placeholder="Your Name" required>
+      <input type="tel" id="compPhone" placeholder="Phone Number" required>
+      <select id="compCategory">
+        <option>Water Supply</option><option>Roads</option><option>Electricity</option>
+        <option>Drainage</option><option>Street Lights</option><option>Other</option>
+      </select>
+      <textarea id="compDesc" placeholder="Describe your complaint" rows="4" required></textarea>
+      <input type="file" id="compFile">
+      <button type="submit" class="btn btn-primary" data-en="Submit Complaint" data-te="ఫిర్యాదు సమర్పించండి">Submit Complaint</button>
+    </form>
+    <div class="form-card">
+      <h3 data-en="Track Complaint Status" data-te="ఫిర్యాదు స్థితిని ట్రాక్ చేయండి">Track Complaint Status</h3>
+      <input type="text" id="trackId" placeholder="Enter Complaint ID e.g. CMP-1001">
+      <button class="btn btn-outline" onclick="trackComplaint()" data-en="Track" data-te="ట్రాక్">Track</button>
+      <div id="trackResult"></div>
+      <h4 data-en="Your Recent Complaints" data-te="మీ ఇటీవలి ఫిర్యాదులు">Your Recent Complaints</h4>
+      <div id="myComplaints"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ADMIN PANEL ===================== -->
+<section class="page" id="page-admin">
+  <h1 data-en="Admin Panel" data-te="అడ్మిన్ ప్యానెల్">Admin Panel</h1>
+  <div id="adminLocked" class="form-card">
+    <p data-en="Please sign in as admin (admin@village.gov.in / admin123) to access this panel." data-te="ఈ ప్యానెల్‌ను యాక్సెస్ చేయడానికి అడ్మిన్‌గా సైన్ ఇన్ చేయండి (admin@village.gov.in / admin123).">Please sign in as admin to access this panel.</p>
+  </div>
+  <div id="adminDashboard" style="display:none">
+    <div class="dashboard-stats" id="dashboardStats"></div>
+    <div class="tabs">
+      <button class="tab-btn active" data-admintab="schemes">Manage Schemes</button>
+      <button class="tab-btn" data-admintab="announce">Announcements</button>
+      <button class="tab-btn" data-admintab="bus">Manage Businesses</button>
+      <button class="tab-btn" data-admintab="comp">Manage Complaints</button>
+      <button class="tab-btn" data-admintab="users">Manage Users</button>
+    </div>
+    <div id="adminContent" class="form-card"></div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <p>&copy; 2026 Telangana Village Information Portal | Government of Telangana</p>
+  <p data-en="Developed for Digital Village Initiative" data-te="డిజిటల్ గ్రామ కార్యక్రమం కోసం అభివృద్ధి చేయబడింది">Developed for Digital Village Initiative</p>
+</footer>
+
+<!-- ===================== AUTH MODAL ===================== -->
+<div class="modal-overlay" id="authModal">
+  <div class="modal">
+    <button class="modal-close" id="closeAuth">&times;</button>
+    <div class="auth-tabs">
+      <button class="auth-tab active" data-authtab="login" data-en="Sign In" data-te="సైన్ ఇన్">Sign In</button>
+      <button class="auth-tab" data-authtab="register" data-en="Register" data-te="నమోదు">Register</button>
+    </div>
+    <form id="loginForm" class="auth-form active">
+      <input type="email" id="loginEmail" placeholder="Email" required>
+      <input type="password" id="loginPassword" placeholder="Password" required>
+      <button type="submit" class="btn btn-primary" data-en="Sign In" data-te="సైన్ ఇన్">Sign In</button>
+      <p class="hint">Demo admin: admin@village.gov.in / admin123</p>
+    </form>
+    <form id="registerForm" class="auth-form">
+      <input type="text" id="regName" placeholder="Full Name" required>
+      <input type="email" id="regEmail" placeholder="Email" required>
+      <input type="tel" id="regPhone" placeholder="Phone Number" required>
+      <input type="password" id="regPassword" placeholder="Password" required>
+      <button type="submit" class="btn btn-primary" data-en="Register" data-te="నమోదు">Register</button>
+    </form>
+  </div>
+</div>
+
+<!-- ===================== VOICE ASSISTANT PANEL ===================== -->
+<div class="voice-panel" id="voicePanel">
+  <div class="voice-header">
+    <span data-en="🎙️ AI Village Assistant" data-te="🎙️ AI గ్రామ సహాయకుడు">🎙️ AI Village Assistant</span>
+    <select id="voiceLang">
+      <option value="en-IN">English</option>
+      <option value="te-IN">తెలుగు</option>
+      <option value="hi-IN">हिंदी</option>
+    </select>
+    <button id="closeVoice">&times;</button>
+  </div>
+  <div class="voice-chat" id="voiceChat"></div>
+  <div class="voice-controls">
+    <input type="text" id="voiceTextInput" placeholder="Type or speak your question...">
+    <button id="micBtn">🎤</button>
+    <button id="sendVoiceText">➤</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/voice.js"></script>
+</body>
+</html>
